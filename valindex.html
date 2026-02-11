@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For Mariyam</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #faf7f8, #ffffff);
+  color: #1a1a1a;
+  overflow-x: hidden;
+  position: relative;
+}
+
+section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.quote {
+  font-size: 1.4rem;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+.valentine-box {
+  background: white;
+  padding: 60px 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  animation: float 6s ease-in-out infinite;
+}
+
+button {
+  margin: 15px;
+  padding: 14px 30px;
+  font-size: 1.1rem;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.yes {
+  background: #111;
+  color: white;
+}
+
+.no {
+  background: #eee;
+}
+
+button:hover { transform: scale(1.05); }
+
+#schedule { display: none; }
+
+.schedule-box {
+  background: white;
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+.schedule-box h2 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 25px;
+}
+
+.schedule-box p {
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+/* Heart particles */
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ff4d6d;
+  transform: rotate(45deg);
+  animation: floatHeart linear infinite;
+}
+
+.heart::before, .heart::after {
+  content: "";
+  position: absolute;
+  width: 20px; height: 20px;
+  background: #ff4d6d;
+  border-radius: 50%;
+}
+
+.heart::before { top: -10px; left: 0; }
+.heart::after { left: 10px; top: 0; }
+
+@keyframes floatHeart {
+  0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+  100% { transform: translateY(-1200px) rotate(45deg); opacity: 0; }
+}
+
+@keyframes float {
+  0% {transform: translateY(0);}
+  50% {transform: translateY(-10px);}
+  100% {transform: translateY(0);}
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: QUOTE -->
+<section>
+  <div>
+    <h1>Mariyam</h1>
+    <p class="quote">
+      “Your eyes hold a softness that feels like home,  
+      like every beautiful thing in the world decided to live in one place.”
+    </p>
+  </div>
+</section>
+
+<!-- PAGE 2: VALENTINE QUESTION -->
+<section>
+  <div class="valentine-box">
+    <h1>Will you be my Valentine?</h1>
+    <button class="yes" onclick="showSchedule()">Yes</button>
+    <button class="no" onclick="moveNo(this)">No</button>
+  </div>
+</section>
+
+<!-- PAGE 3: SCHEDULE -->
+<section id="schedule">
+  <div class="schedule-box">
+    <h2>Thank you for letting me spend this Valentine with you :3</h2>
+    <p>11:00 AM — Nails time for you</p>
+    <p>1:00–2:30 PM — Brunch and hang out</p>
+    <p>2:30–3:30 PM — Your uni class</p>
+    <p>3:30–4:30 PM — Light snack together</p>
+    <p>5:00–6:30 PM — Snuggle and relax</p>
+    <p>6:30–9:00 PM — Thermea Spa Village</p>
+  </div>
+</section>
+
+<script>
+// Heart particles
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.classList.add('heart');
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.animationDuration = (3 + Math.random() * 5) + 's';
+  heart.style.width = heart.style.height = (10 + Math.random() * 20) + 'px';
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 8000);
+}
+setInterval(createHeart, 400);
+
+// Button actions
+function showSchedule() {
+  document.getElementById("schedule").style.display = "flex";
+  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+}
+
+function moveNo(button) {
+  button.style.position = "absolute";
+  button.style.top = Math.random() * 80 + "%";
+  button.style.left = Math.random() * 80 + "%";
+}
+</script>
+
+</body>
+</html>
